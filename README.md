@@ -54,8 +54,6 @@ detect:
 
 ### Demo
 **Night Scene**
-![alt text](/figures/day_visible.gif)
-![alt text](/figures/day_infrared.gif)
 <div align="left">
 <img src="https://github.com/datu0615/MCOR/figures/day_visible.gif" width="600">
 <img src="https://github.com/datu0615/MCOR/figures/day_infrared.gif" width="600">
