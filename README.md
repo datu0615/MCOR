@@ -3,7 +3,9 @@
 ## Overview
 Images obtained from different modalities can effectively enhance the accuracy and reliability of the detection model by complementing specialized information from visible (RGB) and infrared (IR) images.  
 However, integrating information from multiple modalities faces the following challenges:  
-1) distinct characteristics of RGB and IR images lead to the problem of modality imbalance, 2) fusing multimodal information can greatly affect the detection accuracy, as some of the unique information provided by each modality is lost during the integration process, and 3) RGB and IR images are fused while preserving the noise of each modality.
+1) distinct characteristics of RGB and IR images lead to the problem of modality imbalance
+2) fusing multimodal information can greatly affect the detection accuracy, as some of the unique information provided by each modality is lost during the integration process
+3) RGB and IR images are fused while preserving the noise of each modality.
 To address these issues, we propose a novel multispectral object detection network which contains two main components; 1) Cross-modal Information Complementary (CIC) module, and 2) Cosine Similarity Channel Resampling (CSCR) module.
 The proposed method addresses the modality imbalance problem and efficiently fuses RGB and IR images in the feature level.
 Extensive experimental results on three different benchmark datasets, LLVIP, FLIR and M$^3$FD, verify the effectiveness and generalization performance of the proposed multispectral object detection network compared with other state-of-the-art methods.
@@ -41,14 +43,19 @@ some example in data/multispectral/
 some example in models/MCOR/
 
 ### Train Test and Detect
-train: ``` python train.py --data data/multispectral/{dataset}.yaml --cfg models/MCOR/{model}.yaml --epochs 100 --batch-size {batch_size} --device {device}```
+train: 
+``` python train.py --data data/multispectral/{dataset}.yaml --cfg models/MCOR/{model}.yaml --epochs 100 --batch-size {batch_size} --device {device}```
 
-test: ``` python test.py --weights runs/train/{model}/weights/best.pt --data data/multispectral/{dataset}.yaml --batch-size {batch_size} --device {device}```
+test: 
+``` python test.py --weights runs/train/{model}/weights/best.pt --data data/multispectral/{dataset}.yaml --batch-size {batch_size} --device {device}```
 
-detect: ``` python detect_twostream.py --weight runs/train/{model}/weights/best.pt --source1 datasets/{dataset}/visible/test --source2 datasets/{dataset}/infrared/test --device {device}```
+detect: 
+``` python detect_twostream.py --weight runs/train/{model}/weights/best.pt --source1 datasets/{dataset}/visible/test --source2 datasets/{dataset}/infrared/test --device {device}```
 
 ### Demo
 **Night Scene**
+![alt text](/figures/day_visible.gif)
+![alt text](/figures/day_infrared.gif)
 <div align="left">
 <img src="https://github.com/datu0615/MCOR/figures/day_visible.gif" width="600">
 <img src="https://github.com/datu0615/MCOR/figures/day_infrared.gif" width="600">
