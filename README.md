@@ -8,9 +8,7 @@ To address these issues, we propose a novel multispectral object detection netwo
 The proposed method addresses the modality imbalance problem and efficiently fuses RGB and IR images in the feature level.
 Extensive experimental results on three different benchmark datasets, LLVIP, FLIR and M$^3$FD, verify the effectiveness and generalization performance of the proposed multispectral object detection network compared with other state-of-the-art methods.
 ### Overall Architecture
-<div align="left">
-<img src="https://github.com/datu0615/MCOR/figures/over_arch_fusion_final.png" width="800">
-</div>
+![alt text](/figures/over_arch_fusion_final.png)
 
 ## Installation 
 Python>=3.6.0 is required with all requirements.txt installed including PyTorch>=1.7 (The same as YOLOv5 and YOLOv8 https://github.com/ultralytics/yolov5 ).
