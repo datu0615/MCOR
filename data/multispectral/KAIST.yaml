@@ -1,0 +1,19 @@
+# COCO 2017 dataset http://cocodataset.org - first 128 training images
+# Train command: python train.py --data coco128.yaml
+# Default dataset location is next to YOLOv5:
+#   /parent_folder
+#     /coco128
+#     /yolov5
+
+
+# train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
+train_rgb: /home/jb/docker/od/multispectral-object-detection/datasets/KAIST/images/visible/train.txt
+val_rgb: /home/jb/docker/od/multispectral-object-detection/datasets/KAIST/images/visible/test.txt
+train_ir: /home/jb/docker/od/multispectral-object-detection/datasets/KAIST/images/infrared/train.txt
+val_ir: /home/jb/docker/od/multispectral-object-detection/datasets/KAIST/images/infrared/test.txt
+
+# number of classes
+nc: 3
+
+# class names
+names: ['cyclist', 'people', 'person']
