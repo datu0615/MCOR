@@ -89,6 +89,21 @@ python detect_twostream.py --weight runs/train/{model}/weights/best.pt --source1
 |M<sup>3</sup>FD|| ✔️ |85.2|60.2|56.6|
 |M<sup>3</sup>FD| ✔️ | ✔️ |**87.2 (Δ4.6)**|**60.9 (Δ5.1)**|**57.2 (Δ4.9)**|
 
+|Dataset|Method|CSCR|mAP50|mAP75|mAP|
+|:---------: |------------|:-----:|:-----------------:|:-------------:|
+|FLIR|Two Stream||74.2|29.1|35.6|
+|FLIR|Two Stream| ✔️ |**74.6 (Δ0.4)**|**29.7 (Δ0.6)**|**36.2 (Δ0.6)**|
+|FLIR|CFT||74.5|30.1|36.5|
+|FLIR|CFT| ✔️ |**75.6 (Δ1.1)**|**30.9 (Δ0.8)**|**37.2 (Δ0.7)**|
+|LLVIP|Two Stream||96.7|71.3|62.3|
+|LLVIP|Two Stream| ✔️ |**96.8 (Δ0.1)**|**71.4 (Δ0.1)**|**62.8 (Δ0.2)**|
+|LLVIP|CFT||96.8|70.7|62.9|
+|LLVIP|CFT| ✔️ |**97.3 (Δ0.5)**|**71.3 (Δ0.6)**|**62.3 (Δ0.6)**|
+|M<sup>3</sup>FD|Two Stream||82.6 | 55.8  | 52.3
+|M<sup>3</sup>FD|Two Stream| ✔️ |**85.2 (Δ2.6)**|**60.3(Δ5.5)**|**56.6 (Δ4.3)**|
+|M<sup>3</sup>FD|CFT||83.2 | 55.1  | 52.2
+|M<sup>3</sup>FD|CFT| ✔️ |**86.0 (Δ2.8)**|**59.3(Δ4.2)**|**57.2 (Δ5.0)**|
+
 <!--
 |Dataset|CFT|mAP50|mAP75|mAP|
 |:---------: |------------|:-----:|:-----------------:|:-------------:|
@@ -118,6 +133,6 @@ Miss Rate - FPPI curve
 -->
 
 ## Acknowlegment
-The code is borrowed from [YOLOㅍ5](https://github.com/ultralytics/yolov5) and [CFT](https://github.com/DocF/multispectral-object-detection). Thanks for their contribution.
+The code is borrowed from [YOLOv5](https://github.com/ultralytics/yolov5) and [CFT](https://github.com/DocF/multispectral-object-detection). Thanks for their contribution.
 
   
