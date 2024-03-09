@@ -14,7 +14,7 @@ Extensive experimental results on three different benchmark datasets, LLVIP, FLI
 ![alt text](/figures/over_arch_fusion_final.png)
 
 ## Installation 
-Python>=3.6.0 is required with all requirements.txt installed including PyTorch>=1.7 (The same as YOLOv5 and YOLOv8 https://github.com/ultralytics/yolov5 ).
+Python>=3.6.0 is required with all requirements.txt installed including PyTorch>=1.7 (The same as [YOLOv5](https://github.com/ultralytics/yolov5) and [YOLOv8](https://github.com/ultralytics/ultralytics)).
 
 Download repository:
 ```bash
