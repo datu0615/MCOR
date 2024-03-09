@@ -7,8 +7,8 @@ However, integrating information from multiple modalities faces the following ch
 2) fusing multimodal information can greatly affect the detection accuracy, as some of the unique information provided by each modality is lost during the integration process
 3) RGB and IR images are fused while preserving the noise of each modality.
 
-To address these issues, we propose a novel multispectral object detection network which contains two main components; 1) Cross-modal Information Complementary (CIC) module, and 2) Cosine Similarity Channel Resampling (CSCR) module.  
-The proposed method addresses the modality imbalance problem and efficiently fuses RGB and IR images in the feature level.  
+To address these issues, we propose a novel multispectral object detection network which contains two main components; 1) Cross-modal Information Complementary (CIC) module, and 2) Cosine Similarity Channel Resampling (CSCR) module. 
+The proposed method addresses the modality imbalance problem and efficiently fuses RGB and IR images in the feature level. 
 Extensive experimental results on three different benchmark datasets, LLVIP, FLIR and M<sup>3</sup>FD, verify the effectiveness and generalization performance of the proposed multispectral object detection network compared with other state-of-the-art methods.
 ### Overall Architecture
 ![alt text](/figures/over_arch_fusion_final.png)
