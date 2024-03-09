@@ -62,8 +62,8 @@ python detect_twostream.py --weight runs/train/{model}/weights/best.pt --source1
 ### Demo
 **Night Scene**
 <div align="left">
-<img src="https://github.com/datu0615/MCOR/figures/day_visible.gif" width="600">
-<img src="https://github.com/datu0615/MCOR/figures/day_infrared.gif" width="600">
+<img src="https://github.com/datu0615/MCOR/figures/day_visible.gif" width="600"></img>
+<img src="https://github.com/datu0615/MCOR/figures/day_infrared.gif" width="600"></img>
 </div>
 
 **Day Scene**
