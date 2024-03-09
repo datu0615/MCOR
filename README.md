@@ -74,6 +74,7 @@ python detect_twostream.py --weight runs/train/{model}/weights/best.pt --source1
 -->
 
 ## Results
+<div align="center">
 |Dataset|CIC|CSCR|mAP50|mAP75|mAP|
 |:---------:|:------------:|:-----------:|:-----:|:-----------------:|:-------------:|
 |FLIR|||74.2|29.1|35.6|
@@ -88,7 +89,9 @@ python detect_twostream.py --weight runs/train/{model}/weights/best.pt --source1
 |M<sup>3</sup>FD|✔️||86.1|62.4|57.8|
 |M<sup>3</sup>FD||✔️|85.2|60.2|56.6|
 |M<sup>3</sup>FD|✔️|✔️|**87.2 (Δ4.6)**|**60.9 (Δ5.1)**|**57.2 (Δ4.9)**|
+</div>
 
+<div align="center">
 |Dataset|Method|CSCR|mAP50|mAP75|mAP|
 |:---------:|:------------:|:------------:|:-----:|:-----------------:|:-------------:|
 |FLIR|Two Stream||74.2|29.1|35.6|
@@ -103,6 +106,7 @@ python detect_twostream.py --weight runs/train/{model}/weights/best.pt --source1
 |M<sup>3</sup>FD|Two Stream|✔️|**85.2 (Δ2.6)**|**60.3(Δ5.5)**|**56.6 (Δ4.3)**|
 |M<sup>3</sup>FD|CFT||83.2 | 55.1  | 52.2
 |M<sup>3</sup>FD|CFT|✔️|**86.0 (Δ2.8)**|**59.3(Δ4.2)**|**57.2 (Δ5.0)**|
+</div>
 
 <!--
 |Dataset|CFT|mAP50|mAP75|mAP|
