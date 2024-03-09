@@ -45,13 +45,19 @@ some example in models/MCOR/
 
 ### Train Test and Detect
 train:  
-``` python train.py --data data/multispectral/{dataset}.yaml --cfg models/MCOR/{model}.yaml --epochs 100 --batch-size {batch_size} --device {device}```
+```bash
+python train.py --data data/multispectral/{dataset}.yaml --cfg models/MCOR/{model}.yaml --epochs 100 --batch-size {batch_size} --device {device}
+```
 
 test:  
-``` python test.py --weights runs/train/{model}/weights/best.pt --data data/multispectral/{dataset}.yaml --batch-size {batch_size} --device {device}```
+```bash
+python test.py --weights runs/train/{model}/weights/best.pt --data data/multispectral/{dataset}.yaml --batch-size {batch_size} --device {device}
+```
 
 detect:  
-``` python detect_twostream.py --weight runs/train/{model}/weights/best.pt --source1 datasets/{dataset}/visible/test --source2 datasets/{dataset}/infrared/test --device {device}```
+```bash
+python detect_twostream.py --weight runs/train/{model}/weights/best.pt --source1 datasets/{dataset}/visible/test --source2 datasets/{dataset}/infrared/test --device {device}
+```
 
 ### Demo
 **Night Scene**
