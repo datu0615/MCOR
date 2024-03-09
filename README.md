@@ -58,7 +58,7 @@ detect:
 ```bash
 python detect_twostream.py --weight runs/train/{model}/weights/best.pt --source1 datasets/{dataset}/visible/test --source2 datasets/{dataset}/infrared/test --device {device}
 ```
-
+<!--
 ### Demo
 **Night Scene**
 <div align="left">
@@ -71,8 +71,24 @@ python detect_twostream.py --weight runs/train/{model}/weights/best.pt --source1
 <img src="https://github.com/datu0615/MCOR/figures/night_visible.gif" width="600">
 <img src="https://github.com/datu0615/MCOR/figures/night_infrared.gif" width="600">
 </div>
+-->
 
 ## Results
+|Dataset|CIC|CSCR|mAP50|mAP75|mAP|
+|:---------: |------------|:-----:|:-----------------:|:-------------:|
+|FLIR|||73.0|32.0|37.4|
+|FLIR| ✔️ ||95.8|71.4|62.3|
+|FLIR|| ✔️ |95.8|71.4|62.3|
+|FLIR| ✔️ | ✔️ |**97.5 (Δ1.7)**|**72.9 (Δ1.5)**|**63.6 (Δ1.3)**|
+|LLVIP|||73.0|32.0|37.4|
+|LLVIP| ✔️ ||95.8|71.4|62.3|
+|LLVIP|| ✔️ |95.8|71.4|62.3|
+|LLVIP| ✔️ | ✔️ |**97.5 (Δ1.7)**|**72.9 (Δ1.5)**|**63.6 (Δ1.3)**|
+|M<sup>3</sup>FD|||73.0|32.0|37.4|
+|M<sup>3</sup>FD| ✔️ ||95.8|71.4|62.3|
+|M<sup>3</sup>FD|| ✔️ |95.8|71.4|62.3|
+|M<sup>3</sup>FD| ✔️ | ✔️ |**97.5 (Δ1.7)**|**72.9 (Δ1.5)**|**63.6 (Δ1.3)**|
+
 <!--
 |Dataset|CFT|mAP50|mAP75|mAP|
 |:---------: |------------|:-----:|:-----------------:|:-------------:|
