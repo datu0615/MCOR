@@ -9,7 +9,7 @@ However, integrating information from multiple modalities faces the following ch
 
 To address these issues, we propose a novel multispectral object detection network which contains two main components; 1) Cross-modal Information Complementary (CIC) module, and 2) Cosine Similarity Channel Resampling (CSCR) module.
 The proposed method addresses the modality imbalance problem and efficiently fuses RGB and IR images in the feature level.
-Extensive experimental results on three different benchmark datasets, LLVIP, FLIR and M$^3$FD, verify the effectiveness and generalization performance of the proposed multispectral object detection network compared with other state-of-the-art methods.
+Extensive experimental results on three different benchmark datasets, LLVIP, FLIR and M<sup>3</sup>FD, verify the effectiveness and generalization performance of the proposed multispectral object detection network compared with other state-of-the-art methods.
 ### Overall Architecture
 ![alt text](/figures/over_arch_fusion_final.png)
 
@@ -44,13 +44,13 @@ some example in data/multispectral/
 some example in models/MCOR/
 
 ### Train Test and Detect
-train: 
+train:  
 ``` python train.py --data data/multispectral/{dataset}.yaml --cfg models/MCOR/{model}.yaml --epochs 100 --batch-size {batch_size} --device {device}```
 
-test: 
+test:  
 ``` python test.py --weights runs/train/{model}/weights/best.pt --data data/multispectral/{dataset}.yaml --batch-size {batch_size} --device {device}```
 
-detect: 
+detect:  
 ``` python detect_twostream.py --weight runs/train/{model}/weights/best.pt --source1 datasets/{dataset}/visible/test --source2 datasets/{dataset}/infrared/test --device {device}```
 
 ### Demo
