@@ -1,0 +1,114 @@
+# parameters
+nc: 1  # number of classes
+depth_multiple: 1.00  # model depth multiple
+width_multiple: 1.00  # layer channel multiple
+
+# anchors
+anchors:
+  - [10,13, 16,30, 33,23]   # P3/8
+  - [30,61, 62,45, 59,119]  # P4/16
+  - [116,90, 156,198, 373,326]  # P5/32
+
+# YOLOv5 backbone
+backbone:
+  # [from, number, module, args]
+  # Two Stream
+  [
+    ######### TransformerBlock One #############
+    # stream one
+    [-1, 1, Focus, [64, 3]],    # 0-P1/2
+    [-1, 1, Conv, [128, 3, 2]], # 1-P2/4
+    [-1, 3, C3, [128]],   # 2-P2/4
+    # stream two
+    [-4, 1, Focus, [64, 3]],    # 3-P1/2
+    [-1, 1, Conv, [128, 3, 2]], # 4-P2/4
+    [-1, 3, C3, [128]],   # 5-P2/4
+    # transformer fusion
+    [[2,5], 1, CIC, [128]], # 6-P2/4
+    [[2,6], 1, Add2, [128,1]],  # 7-P2/4 stream one:x+trans[0]
+    [[5,6], 1, Add2, [128,0]],  # 8-P2/4 stream two:x+trans[1]   
+    [[7,8], 1, GPT, [128]], # 9-P2/4
+    [[7,9], 1, Add2, [128,0]],  # 10-P2/4 stream one:x+trans[0]
+    [[8,9], 1, Add2, [128,1]],  # 11-P2/4 stream two:x+trans[1]
+    
+    ######### TransformerBlock Two #############
+   # stream one
+    [10, 1, Conv, [256, 3, 2]],  # 12-P3/8
+    [-1, 9, C3, [256]],   # 13-P3/8
+   # stream two
+    [11, 1, Conv, [256, 3, 2]],  # 14-P3/8
+    [-1, 9, C3, [256]],   # 15-P3/8
+   # transformer fusion
+    [[13,15], 1, CIC, [256]], # 16-P2/4
+    [[13,16], 1, Add2, [256,1]],  # 17-P2/4 stream one:x+trans[0]
+    [[15,16], 1, Add2, [256,0]],  # 18-P2/4 stream two:x+trans[1] 
+    [[17,18], 1, GPT, [256]],   # 19-P3/8
+    [[17,19], 1, Add2, [256,0]],    # 20-P3/8 stream one x+trans[0]
+    [[18,19], 1, Add2, [256,1]],    # 21-P3/8 stream two x+trans[1]
+
+
+   ######### TransformerBlock Three #############
+   # stream one
+    [20, 1, Conv, [512, 3, 2]],   # 22-P4/16
+    [-1, 9, C3, [512]],   # 23-P4/16
+   # stream two
+    [21, 1, Conv, [512, 3, 2]],   # 24-P4/16
+    [-1, 9, C3, [512]],   # 25-P4/16
+   # transformer fusion
+    [[23,25], 1, CIC, [512]], # 26-P2/4
+    [[23,26], 1, Add2, [512,1]],  # 27-P2/4 stream one:x+trans[0]
+    [[25,26], 1, Add2, [512,0]],  # 28-P2/4 stream two:x+trans[1]   
+    [[27,28], 1, GPT, [512]],   # 29-P3/8
+    [[27,29], 1, Add2, [512,0]],    # 30-P3/8 stream one x+trans[0]
+    [[28,29], 1, Add2, [512,1]],    # 31-P3/8 stream two x+trans[1]
+
+
+    ######### TransformerBlock Four #############
+    # stream one
+    [-2, 1, Conv, [1024, 3, 2]],    # 32-P5/32
+    [-1, 1, SPP, [1024, [5, 9, 13]]],   # 33-P5/32
+    [-1, 3, C3, [1024, False]],   # 34-P5/32
+    # stream two
+    [22, 1, Conv, [1024, 3, 2]],    # 35-P5/32
+    [-1, 1, SPP, [1024, [5, 9, 13]]],   # 36-P5/32
+    [-1, 3, C3, [1024, False]],   # 37-P5/32
+    # transformer fusion
+    [[34,37], 1, CIC, [1024]], # 38-P2/4
+    [[34,38], 1, Add2, [1024,1]],  # 39-P2/4 stream one:x+trans[0]
+    [[37,38], 1, Add2, [1024,0]],  # 40-P2/4 stream two:x+trans[1]   
+    [[39,40], 1, GPT, [1024]],    # 41-P5/32
+    [[39,41], 1, Add2, [1024,0]],    # 42-P5/32 stream one x+trans[0]
+    [[40,41], 1, Add2, [1024,1]],    # 43-P5/32 stream two x+trans[1]
+
+
+    ######### Add Block #############
+    [[20,21], 1, Add_CS, [1]],   # 44-P3/8 fusion backbone P3
+    [[30,31], 1, Add_CS, [1]],   # 45-P4/16 fusion backbone P4
+    [[42,43], 1, Add_CS, [1]],   # 46-P5/32 fusion backbone P5
+
+  ]
+
+
+# YOLOv5 head
+head:
+  [
+    [-1, 1, Conv, [512, 1, 1]],   # 47
+    [-1, 1, nn.Upsample, [None, 2, 'nearest']],   # 48
+    [[-1,45], 1, Concat, [1]],    # 49 cat backbone P4
+    [-1, 3, C3, [512, False]],    # 50
+
+    [-1, 1, Conv, [256, 1, 1]],   # 51
+    [-1, 1, nn.Upsample, [None, 2, 'nearest']],   # 52
+    [[-1,44], 1, Concat, [1]],    # 53 cat backbone P3
+    [-1, 3, C3, [256, False]],    # 54 (P3/8-small)
+
+    [-1, 1, Conv, [256, 3, 2]],   # 55
+    [[-1,51], 1, Concat, [1]],    # 56 cat head P4
+    [-1, 3, C3, [512, False]],    # 57 (P4/16-medium)
+
+    [-1, 1, Conv, [512, 3, 2]],    # 58
+    [[-1,47], 1, Concat, [1]],     # 59 cat head P5
+    [-1, 3, C3, [1024, False]],     # 60 (P5/32-large)
+
+    [[54, 57, 60], 1, Detect, [nc, anchors]],   # Detect(P3, P4, P5)
+  ]
